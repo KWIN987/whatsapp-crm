@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: "/icon" }],
   },
+  // Chrome's auto-translate rewrites text nodes, which makes React throw
+  // "removeChild: node is not a child" on the next update.
+  other: { google: "notranslate" },
   formatDetection: {
     email: false,
     address: false,
@@ -83,6 +86,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      translate="no"
       data-theme={DEFAULT_THEME}
       data-mode={DEFAULT_MODE}
       className={`${inter.variable} h-full antialiased`}
